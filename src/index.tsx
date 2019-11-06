@@ -9,7 +9,7 @@ class State{
     username:string;
     password:string
 }
-const URL = "https://192.168.0.112:30845";
+//const URL = "http://127.0.0.1:8088";
 class Login extends React.Component{
     state: State;
     constructor(props:React.Component){
@@ -25,7 +25,7 @@ class Login extends React.Component{
         
     }
     componentDidMount(){
-        fetch(URL)
+        //fetch(URL)
     }
     get_logged_in():string{
         if(this.state.logged_in==true){
@@ -35,7 +35,8 @@ class Login extends React.Component{
 
     }
     async login(username:string,password:string){
-        let status = await axios.post(URL+"/api/login",{
+        console.log("performing login")
+        let status = await axios.post("/api/login",{
             username:username,
             password:password,
         })
@@ -51,7 +52,7 @@ class Login extends React.Component{
         this.login(this.state.username,this.state.password)
         console.log(data)
         this.state.logged_in=true;
-        alert("submitting");
+       
     }
     handleInputChange(event:any){
         const value = event.target.value;

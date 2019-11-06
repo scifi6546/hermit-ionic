@@ -1,5 +1,13 @@
 {
   "name": "hermit",
   "integrations": {},
-  "type": "react"
+  "type": "react",
+  "proxies":[
+    {
+      "path": "/api",
+      "proxyUrl":"http://127..1:8088/api"
+
+
+    }
+  ]
 }
