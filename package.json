@@ -22,7 +22,6 @@
     "typescript": "3.6.3"
   },
   "scripts": {
-    "serve": "ionic serve",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -43,5 +42,6 @@
       "last 1 safari version"
     ]
   },
+  "proxy": "http://localhost:8088",
   "description": "An Ionic project"
 }
