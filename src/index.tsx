@@ -25,7 +25,6 @@ class MainPage extends React.Component{
         )
     }
 }
-//const URL = "http://127.0.0.1:8088";
 
 
 ReactDOM.render(<App/>,document.getElementById('root'));

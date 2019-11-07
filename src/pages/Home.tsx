@@ -1,4 +1,4 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonThumbnail } from '@ionic/react';
+import { IonContent,IonLabel,IonText, IonHeader, IonPage, IonTitle,IonList, IonToolbar, IonItem, IonImg, IonThumbnail } from '@ionic/react';
 import React from 'react';
 import { string } from 'prop-types';
 import Login from "./Login"
@@ -15,9 +15,9 @@ class State{
   videos:[video];
   playing_video:string;
 }
-class VideoViews extends React.Component{
+class VideoThumb extends React.Component{
   state:State;
-
+  num_rows:Number = 4
   constructor(props:React.Component){
     super(props);  
     
@@ -52,12 +52,36 @@ class VideoViews extends React.Component{
     if(this.state.playing_video!=null){
       window.location.href="/videos"+this.state.playing_video;
     }
+    
     let temp_out = this.state.videos.map((vid)=>
-      <IonThumbnail>
-          <img src={vid.thumbnail_url} onClick={this.click} id={vid.url}></img>
-      </IonThumbnail>
+    <IonItem>
+      <IonLabel>
+        <IonThumbnail>
+        <IonImg src={vid.thumbnail_url} onClick={this.click} id={vid.url} key={vid.thumbnail_url}></IonImg>
+        </IonThumbnail>
+      </IonLabel>
+      <IonLabel>
+        <IonText class="ion-text-wrap">
+          {vid.name}
+        </IonText>
+      </IonLabel>
+    </IonItem>
     );
+    console.log("thumbnails:");
+    console.log(temp_out)
     return temp_out;
+  }
+}
+class VideoPage extends React.Component{
+  constructor(props: any){
+      super(props);
+  }
+  render(){
+      return(
+              <IonList>
+               <VideoThumb></VideoThumb>
+              </IonList>
+      );
   }
 }
 class Home extends React.Component{
@@ -77,7 +101,9 @@ class Home extends React.Component{
 
       </IonToolbar>
       </IonHeader>
-      <VideoViews></VideoViews>
+      <IonContent>
+      <VideoPage/>
+      </IonContent>
     </IonPage>);
   }
 }
